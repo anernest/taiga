@@ -76,9 +76,13 @@ services:
       - events
     networks:
       - default
-    ports:
-      - 80:80
-      - 443:443
+    # ports:
+      # - 8006:80
+      # - 443:443
+    expose:
+      - 80
+    # environment:
+      # VIRTUAL_HOST: taiga.water-wizard.org
     volumes:
       #- ./cert:/taiga-cert
       - ./conf/proxy:/taiga-conf
@@ -87,3 +91,5 @@ services:
 
 networks:
   default:
+    external:
+      name: nginx-proxy
